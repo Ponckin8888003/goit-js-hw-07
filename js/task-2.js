@@ -27,14 +27,20 @@ const images = [
 let gallery = document.querySelector('.gallery');
 gallery.style.display = 'flex';
 gallery.style.flexWrap = 'wrap';
+
+let arrayElements = [];
 for (let image of images) {
   let liItem = document.createElement('li');
   let liImage = document.createElement('img');
-  gallery.append(liItem);
-  liItem.append(liImage);
+
+  arrayElements.push(liItem);
+
   liImage.src = image.url;
   liImage.alt = image.alt;
   liItem.style.listStyle = 'none';
   liImage.style.width = '360px';
-  liImage.style.heigth = '300px';
+  liImage.style.height = '300px';
+
+  liItem.append(liImage);
 }
+gallery.append(...arrayElements);
